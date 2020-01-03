@@ -1,0 +1,10 @@
+[
+  {
+    "text": "fixed accounts",
+    "intent": "pAccountFixedDeposit",
+    "intent_prediction": {
+      "name": "pAccountInquiry",
+      "confidence": 0.12798644602298737
+    }
+  }
+]

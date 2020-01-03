@@ -1,0 +1,25 @@
+language: "en"
+
+pipeline:
+- name: "WhitespaceTokenizer"
+- name: "CRFEntityExtractor"
+- name: "EntitySynonymMapper"
+- name: "CountVectorsFeaturizer"
+- name: "EmbeddingIntentClassifier"
+- name: "bert_classifier.BertClassifier"
+  "batch_size": 64
+  "epochs": 10
+  "learning_rate": 2e-6
+  "max_seq_length": 128
+
+policies:
+  - name: KerasPolicy
+    epochs: 30
+    max_history: 25
+  - name: FallbackPolicy
+    nlu_threshold: 0.3
+    core_threshold: 0.3
+    fallback_action_name: "action_default_fallback"
+  - name: AugmentedMemoizationPolicy
+    max_history: 25
+  - name: FormPolicy
